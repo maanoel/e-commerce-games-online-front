@@ -1,0 +1,170 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeFile="MaterPage.master.cs" Inherits="Master_MaterPage2" %>
+
+<%@ Register Src="../paginas/control/control-menu-horizontal.ascx" TagName="control"
+    TagPrefix="uc1" %>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+    <title></title>
+    <!-- CSS PRINCIPAL E JQUERY  -->
+    <link href="<%:ResolveUrl("../Scripts/style.css")%>" rel="stylesheet" type="text/css" />
+    <script src="<%:ResolveUrl("../Scripts/jquery-1.8.0.js")%>" type="text/javascript"></script>
+    <!-- Menu Drop Down -->
+    <link href="../Scripts/menu-drop-down/css/dcaccordion.css" rel="stylesheet" type="text/css" />
+    <!-- /Menu Drop Down -->
+    <!-- NIVO SLIDER -->
+    <link href="<%:ResolveUrl("../Scripts/nivo-slider/nivo-slider.css")%>" rel="stylesheet"
+        type="text/css" media="screen" />
+    <link href="<%:ResolveUrl("../Scripts/nivo-slider/demo/style.css")%>" type="text/css"
+        media="screen" rel="stylesheet" />
+    <script src="<%:ResolveUrl("../Scripts/nivo-slider/demo/scripts/jquery-1.4.3.min.js")%>"
+        type="text/javascript"></script>
+    <script src="<%:ResolveUrl("../Scripts/nivo-slider/jquery.nivo.slider.pack.js")%>"
+        type="text/javascript"></script>
+    <script type="text/javascript">
+        $(window).load(function () {
+            $('#slider').nivoSlider();
+        });
+    </script>
+    <!-- FIM NIVO SLIDER -->
+    <!-- JQUERY UI -->
+    <link href="<%:ResolveUrl("../Scripts/jquery-ui/css/ui-lightness/jquery-ui-1.9.0.custom.css")%>"
+        rel="stylesheet" type="text/css" />
+    <script src="<%:ResolveUrl("../Scripts/jquery-ui/js/jquery-ui-1.9.0.custom.js")%>"
+        type="text/javascript"></script>
+    <!-- FIM JQUERY UI-->
+
+    <!-- Jquery alertas http://blog.shiguenori.com/2009/02/11/alertas-com-jquery/ -->
+    <script type="text/javascript" src="<%:ResolveUrl("../Scripts/jalert/scripts/jquery.alerts.js")%>"></script>
+    <link rel="stylesheet" type="text/css" href="<%:ResolveUrl("../Scripts/jalert/css/jquery.alerts.css")%>" />
+    <!-- /Jquery alertas-->
+    <!-- CONTENT HEAD -->
+    <asp:ContentPlaceHolder ID="head" runat="server">
+    </asp:ContentPlaceHolder>
+    <!-- FIM CONTENT HEAD -->
+    <!-- HACKS PARA O INTERNET EXPLORER -->
+    <!--[if IE 6]>
+         <link rel="stylesheet" type="text/css" href="<%:ResolveUrl("../Scripts/iecss.css")%>" />
+    <![endif]-->
+    <script type="text/javascript" src="<%:ResolveUrl("../Scripts/boxOver.js")%>"></script>
+    <!-- FIM HACKS PARA O INTERNET EXPLORER -->
+    <!-- TRATAMENTOS DA PÁGINA-->
+    <script type="text/javascript">
+        $(document).ready(function () {
+            //FAZ O SUBMENU DE RAGNAROK INICIAR FECHADO
+            $("#zenys").css("display", "none");
+            $("#contas").css("display", "none");
+
+            //Abre os submenus
+            $("#ragnarok").mouseover(function () {
+                $("#zenys").css("display", "block");
+                $("#contas").css("display", "block");
+            });
+
+            //fecha os submenus
+            $("#ragnarok").mouseout(function () {
+                $("#zenys").css("display", "none");
+                $("#contas").css("display", "none");
+            });
+        });
+    </script>
+</head>
+<body>
+    <form runat="server">
+    <div id="main_container">
+        <div id="slider" class="nivoSlider">
+            <img src="../Images/Banner/banner-1.jpg" alt="" />
+            <img src="../Images/Banner/banner-2.jpg" alt="" />
+            <img src="../Images/Banner/banner-1.jpg" alt="" />
+            <img src="../Images/Banner/banner-2.jpg" alt="" />
+            <img src="../Images/Banner/banner-1.jpg" alt="" />
+        </div>
+        <div id="main_content">
+            <!--Menu horizontal -->
+            <uc1:control ID="control1" runat="server" />
+            <!--/Menu horizontal -->
+            <div class="left_content">
+                <asp:ContentPlaceHolder ID="ContentPlaceHolder2" runat="server">
+                </asp:ContentPlaceHolder>
+                <div class="title_box accordion">
+                    Jogos</div>
+                <ul class="left_menu" id="accordion-1">
+                    <li class="even"><a href="#">Aion</a></li>
+                    <li class="odd"><a href="#">Cabal</a></li>
+                    <li class="even"><a href="#">Diablo 3</a></li>
+                    <li class="odd"><a href="#">Metin2</a></li>
+                    <li class="even"><a href="#">Perfect World</a></li>
+                    <li id="ragnarok" class="odd"><a href="<%:ResolveUrl("../paginas/ragnarok-online.aspx")%>">Ragnarok</a>
+                        <ul>
+                            <li class="cor-amarela" id="zenys"><a href="<%:ResolveUrl("../paginas/ragnarok-online.aspx")%>">Zenys</a></li>
+                            <li class="cor-amarela" id="contas"><a href="  <%:ResolveUrl("../paginas/Contas-Ragnarok.aspx")%>">Contas</a></li>
+                          
+                        </ul>
+                    </li>
+                </ul>
+                <div class="title_box">
+                    Ultimas Notícias</div>
+                <ul class="left_menu">
+                    <li class="even"><a href="#">Novos jogos disponíveis</a></li>
+                    <li class="odd"><a href="#">Lançamento do novo site</a></li>
+                </ul>
+            </div>
+            <!-- FIM MENU ESQUERDA -->
+        </div>
+        <div class="center_content">
+            <div>
+                <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
+                </asp:ContentPlaceHolder>
+            </div>
+        </div>
+        <div class="right_content">
+            <div class="shopping_cart">
+                <div class="title_box">
+                    Meu Carrinho</div>
+                <div class="cart_details">
+                    Vazio
+                    <br />
+                    <span class="border_cart"></span>Total: <span class="price">0,0</span>
+                </div>
+                <div class="cart_icon">
+                    <a href="#" title="">
+                        <img src="../Images/shoppingcart.png" alt="" title="" width="35" height="35" border="0" /></a></div>
+            </div>
+            <div class="title_box">
+                Atendimento Online</div>
+            <div class="border_box">
+                Aqui vai a imagem de atendimento
+            </div>
+            <div class="title_box">
+                Formas de Pagamento</div>
+            <div class="border_box">
+                Aqui vai imagem dos meios de pagamento
+            </div>
+        </div>
+        <div class="footer">
+            <div class="left_footer">
+                <a href="#" target="_blank">
+                    <img src="../Images/Redes_Sociais/facebook.gif" alt="Facebook" onmouseover="this.src='../Images/Redes_Sociais/facebook-over.jpg';"
+                        onmouseout="this.src='../Images/Redes_Sociais/facebook.gif';" /></a> <a href="#"
+                            target="_blank">
+                            <img src="../Images/Redes_Sociais/twitter.gif" alt="Twitter" onmouseover="this.src='../Images/Redes_Sociais/twitter-over.jpg';"
+                                onmouseout="this.src='../Images/Redes_Sociais/twitter.gif';" /></a>
+                <a href="#" target="_blank">
+                    <img src="../Images/Redes_Sociais/orkut.gif" alt="Orkut" onmouseover="this.src='../Images/Redes_Sociais/orkut-over.jpg';"
+                        onmouseout="this.src='../Images/Redes_Sociais/orkut.gif';" /></a> <a href="#" target="_blank">
+                            <img src="../Images/Redes_Sociais/youtube.gif" alt="Youtube" onmouseover="this.src='../Images/Redes_Sociais/youtube-over.jpg';"
+                                onmouseout="this.src='../Images/Redes_Sociais/youtube.gif';" /></a>
+            </div>
+            <div class="center_footer">
+                VendaDeKKs 2009 - 2012 todos os direitos reservados
+            </div>
+            <div class="right_footer">
+                <a href="#">Principal</a> <a href="#">Informações</a> <a href="#">Notícias</a> <a
+                    href="#">Quem Somos</a> <a href="#">Fale Conosco</a>
+            </div>
+        </div>
+    </div>
+    <!-- end of main content -->
+    </form>
+</body>
+</html>
